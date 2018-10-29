@@ -38,7 +38,7 @@ class ApiLog(Component):
         obj = {
             'text': '',
             'intent': {
-                'name': 'none',
+                'name': None,
                 'confidence': 0,
             },
             'entities': [],
@@ -46,9 +46,14 @@ class ApiLog(Component):
         obj.update(message.as_dict(only_output_properties=True))
 
         intent = obj['intent']
+
         obj.update({
             'intent': intent['name'],
             'confidence': intent['confidence'],
         })
+
+        # Botfront expects no intent if intent is None
+        if obj['intent'] is None:
+            del obj['intent']
 
         return obj

@@ -24,3 +24,4 @@ tensorflow==1.8.0
 google-cloud-storage
 fuzzywuzzy
 requests-futures==0.9.7
+python-Levenshtein
